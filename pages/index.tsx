@@ -181,6 +181,10 @@ const Home: NextPage = () => {
     removeLocalStorage(LocalStorageKeyList.Messages)
   }
 
+  const highlightAll = () => {
+    Prism.highlightAll()
+  }
+
   return (
     <div className="w-full">
       <Head>
@@ -194,27 +198,29 @@ const Home: NextPage = () => {
           signinCallback={signinCallback}
         />
       ) : (
-        ''
+        <Group direction="column" position="center">
+          <form onSubmit={handleFormSubmit} className="w-full">
+            <div className="flex">
+              <textarea
+                className="min-h-100 w-full"
+                placeholder="質問を入力"
+                onChange={handleInputChange}
+                value={inputValue}
+              />
+              <Button className="ml-4" type="submit" color="indigo">
+                Submit
+              </Button>
+            </div>
+            <Markdown>{outputValue}</Markdown>
+            <button type="button" onClick={removeCache}>
+              remove Cache
+            </button>
+            <button type="button" onClick={highlightAll}>
+              highlightAll
+            </button>
+          </form>
+        </Group>
       )}
-      <Group direction="column" position="center">
-        <form onSubmit={handleFormSubmit} className="w-full">
-          <div className="flex">
-            <textarea
-              className="min-h-100 w-full"
-              placeholder="質問を入力"
-              onChange={handleInputChange}
-              value={inputValue}
-            />
-            <Button className="ml-4" type="submit" color="indigo">
-              Submit
-            </Button>
-          </div>
-          <Markdown>{outputValue}</Markdown>
-          <button type="button" onClick={removeCache}>
-            remove Cache
-          </button>
-        </form>
-      </Group>
     </div>
   )
 }
