@@ -1,0 +1,33 @@
+import { SignupEmailForm } from '../components/SignupEmailForm'
+
+## SignupEmailForm
+
+SignupEmailForm はカスタムボタンコンポーネントです。
+- `ログインモード`・`登録モード`が切り替え可能です。
+- セキュリティの観点から各モードに応じてパスワードのバリデーションを切り替えています。
+
+### Props
+- signupCallback: 登録時のコールバック
+- signinCallback: ログイン時のコールバック
+
+```tsx
+import {UseFormReturnType} from "@mantine/form/lib/use-form"; import {IForm} from "./index"; import {ApiError} from "@supabase/gotrue-js";
+const signupCallback = async (_form: UseFormReturnType<IForm>) => {
+  return new Promise<ApiError | null>((resolve, _reject) => {
+    const { error } = { error: { message: '', status: 200 } as ApiError }
+    alert('signupCallback')
+    resolve(error)
+  })
+}
+const signinCallback = async (_form: UseFormReturnType<IForm>) => {
+  return new Promise<ApiError | null>((resolve, _reject) => {
+    const { error } = {
+      error: { message: 'invalid email', status: 400 } as ApiError,
+    }
+    resolve(error)
+  })
+}
+<SignupEmailForm signupCallback={signupCallback} signinCallback={signinCallback} />
+```
+
+<SignupEmailForm signupCallback={signupCallback} signinCallback={signinCallback} />

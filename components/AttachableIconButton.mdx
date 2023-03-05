@@ -1,0 +1,52 @@
+import { AttachableIconButton } from '../components/AttachableIconButton'
+import { Flower } from "tabler-icons-react";
+
+## AttachableIconButton
+
+AttachableIconButton はカスタムボタンコンポーネントです。
+
+### Props
+- `type`でボタンの色を切り替えることができます。
+- `callback`に関数を渡すことができます
+- `leftIcon`にReactNodeを渡すと左側に表示されます（アイコン表示用途）
+- `rightIcon`にReactNodeを渡すと右側に表示されます（アイコン表示用途）
+
+### [Main](#main)
+### [Sub](#sub)
+### [LeftIcon](#LeftIcon)
+### [RightIcon](#RightIcon)
+
+### Main
+
+```tsx
+const callback = () => alert('callback');
+<AttachableIconButton type="main" callback={callback}>Main</AttachableIconButton>
+```
+
+<AttachableIconButton type="main">Main</AttachableIconButton>
+
+### Sub
+
+```tsx
+<AttachableIconButton type="sub">Sub</AttachableIconButton>
+```
+
+<AttachableIconButton type="sub">Sub</AttachableIconButton>
+
+### LeftIcon
+
+```tsx
+import {FlowerOff} from "tabler-icons-react";
+<AttachableIconButton type="main" leftIcon={<Flower className="h-6 w-6 text-pink-500"/>}>LeftIcon</AttachableIconButton>
+```
+
+<AttachableIconButton type="main" leftIcon={<Flower className="h-6 w-6 text-pink-500"/>}>LeftIcon</AttachableIconButton>
+
+### RightIcon
+
+```tsx
+import {FlowerOff} from "tabler-icons-react";
+<AttachableIconButton type="sub" rightIcon={<Flower className="h-6 w-6 text-pink-500"/>}>RightIcon</AttachableIconButton>
+```
+
+<AttachableIconButton type="sub" rightIcon={<Flower className="h-6 w-6 text-pink-500"/>}>RightIcon</AttachableIconButton>
